@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unices Services — Home Services at Your Doorstep</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-home"></i>
+        <span>Unices <b>Services</b></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="booking.html">Book Now</a></li>
+        <li><a href="login.html" class="btn-login">Login</a></li>
+        <li><a href="signup.html" class="btn-signup">Sign Up</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Professional Home Services <br/><span>At Your Doorstep</span></h1>
+      <p>Book trusted professionals for cleaning, repairs, beauty & more. Fast, reliable and affordable.</p>
+      <div class="search-bar">
+        <i class="fas fa-map-marker-alt"></i>
+        <input type="text" placeholder="Enter your location..." />
+        <select>
+          <option>All Services</option>
+          <option>Cleaning</option>
+          <option>Beauty</option>
+          <option>Repairs</option>
+          <option>Painting</option>
+          <option>Pest Control</option>
+        </select>
+        <button onclick="window.location.href='services.html'">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><h3>50K+</h3><p>Happy Customers</p></div>
+        <div class="stat"><h3>1K+</h3><p>Professionals</p></div>
+        <div class="stat"><h3>20+</h3><p>Services</p></div>
+        <div class="stat"><h3>4.8★</h3><p>Average Rating</p></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-img-placeholder">
+        <i class="fas fa-tools"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE CATEGORIES ===== -->
+  <section class="categories" id="services">
+    <div class="section-header">
+      <h2>Our Services</h2>
+      <p>Choose from our wide range of professional home services</p>
+    </div>
+    <div class="category-grid">
+      <div class="category-card" onclick="window.location.href='services.html'">
+        <div class="icon" style="background:#e3f2fd"><i class="fas fa-broom" style="color:#1976d2"></i></div>
+        <h3>Home Cleaning</h3>
+        <p>Deep cleaning, sofa, bathroom & more</p>
+        <span class="price">From ₹299</span>
+      </div>
+      <div class="category-card" onclick="window.location.href='services.html'">
+        <div class="icon" style="background:#fce4ec"><i class="fas fa-spa" style="color:#e91e63"></i></div>
+        <h3>Beauty & Wellness</h3>
+        <p>Facial, waxing, hair care at home</p>
+        <span class="price">From ₹399</span>
+      </div>
+      <div class="category-card" onclick="window.location.href='services.html'">
+        <div class="icon" style="background:#e8f5e9"><i class="fas fa-wrench" style="color:#388e3c"></i></div>
+        <h3>Repairs & Fix</h3>
+        <p>Plumbing, electrician, carpentry</p>
+        <span class="price">From ₹199</span>
+      </div>
+      <div class="category-card" onclick="window.location.href='services.html'">
+        <div class="icon" style="background:#fff3e0"><i class="fas fa-paint-roller" style="color:#f57c00"></i></div>
+        <h3>Painting</h3>
+        <p>Interior & exterior painting services</p>
+        <span class="price">From ₹999</span>
+      </div>
+      <div class="category-card" onclick="window.location.href='services.html'">
+        <div class="icon" style="background:#f3e5f5"><i class="fas fa-bug" style="color:#7b1fa2"></i></div>
+        <h3>Pest Control</h3>
+        <p>Cockroach, termite, mosquito control</p>
+        <span class="price">From ₹499</span>
+      </div>
+      <div class="category-card" onclick="window.location.href='services.html'">
+        <div class="icon" style="background:#e0f7fa"><i class="fas fa-snowflake" style="color:#0097a7"></i></div>
+        <h3>AC Services</h3>
+        <p>AC repair, installation & servicing</p>
+        <span class="price">From ₹349</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-it-works">
+    <div class="section-header">
+      <h2>How It Works</h2>
+      <p>Book a service in just 3 simple steps</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <i class="fas fa-search"></i>
+        <h3>Choose a Service</h3>
+        <p>Browse and select the service you need from our wide range of options</p>
+      </div>
+      <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <i class="fas fa-calendar-check"></i>
+        <h3>Book & Schedule</h3>
+        <p>Pick your preferred date, time slot and enter your address</p>
+      </div>
+      <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <i class="fas fa-smile"></i>
+        <h3>Relax & Enjoy</h3>
+        <p>Our verified professional arrives at your door and gets the job done</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials">
+    <div class="section-header">
+      <h2>What Our Customers Say</h2>
+      <p>Trusted by thousands of happy customers</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Amazing service! The cleaning team was professional and thorough. My house has never been this clean!"</p>
+        <div class="customer">
+          <div class="avatar">P</div>
+          <div><h4>Priya Sharma</h4><span>Chennai</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Booked an electrician and he arrived on time. Fixed everything quickly. Great experience overall!"</p>
+        <div class="customer">
+          <div class="avatar">R</div>
+          <div><h4>Rahul Kumar</h4><span>Bangalore</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★☆</div>
+        <p>"The beauty service at home is so convenient! Saved me so much time. Will definitely book again."</p>
+        <div class="customer">
+          <div class="avatar">A</div>
+          <div><h4>Anjali Reddy</h4><span>Hyderabad</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <h2>Ready to Book Your First Service?</h2>
+    <p>Join 50,000+ happy customers who trust Unices Services</p>
+    <a href="booking.html" class="btn-cta">Book Now — It's Easy!</a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3><i class="fas fa-home"></i> Unices Services</h3>
+        <p>Professional home services delivered to your doorstep. Fast, reliable and affordable.</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Home Cleaning</a></li>
+          <li><a href="#">Beauty & Wellness</a></li>
+          <li><a href="#">Repairs & Fix</a></li>
+          <li><a href="#">Painting</a></li>
+          <li><a href="#">Pest Control</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+          <li><i class="fas fa-envelope"></i> hello@unices.in</li>
+          <li><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Unices Services. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== AI CHATBOT BUBBLE ===== -->
+  <div class="chatbot-bubble" onclick="toggleChat()">
+    <i class="fas fa-robot"></i>
+  </div>
+  <div class="chatbot-box" id="chatbot-box">
+    <div class="chat-header">
+      <i class="fas fa-robot"></i>
+      <div>
+        <h4>Uni — AI Assistant</h4>
+        <span>Online</span>
+      </div>
+      <button onclick="toggleChat()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg bot">👋 Hi! I'm Uni, your Unices Services assistant. How can I help you today?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chat-input" placeholder="Ask me anything..." onkeypress="handleKey(event)"/>
+      <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

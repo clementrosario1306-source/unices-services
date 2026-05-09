@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — Unices Services</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/auth.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-home"></i>
+        <span>Unices <b>Services</b></span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="auth-wrapper">
+
+    <!-- LEFT PANEL -->
+    <div class="auth-left">
+      <div class="auth-left-content">
+        <h1>Welcome Back! 👋</h1>
+        <p>Login to manage your bookings, track services and much more.</p>
+        <div class="auth-features">
+          <div class="auth-feature"><i class="fas fa-calendar-check"></i><span>View & manage bookings</span></div>
+          <div class="auth-feature"><i class="fas fa-star"></i><span>Rate your experience</span></div>
+          <div class="auth-feature"><i class="fas fa-tag"></i><span>Exclusive member offers</span></div>
+          <div class="auth-feature"><i class="fas fa-headset"></i><span>Priority support</span></div>
+        </div>
+        <div class="auth-trust">
+          <span>⭐ 4.8 Rating</span>
+          <span>👥 50K+ Users</span>
+          <span>🛡️ 100% Safe</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL — LOGIN FORM -->
+    <div class="auth-right">
+      <div class="auth-card">
+        <div class="auth-logo"><i class="fas fa-home"></i></div>
+        <h2>Login to Your Account</h2>
+        <p class="auth-sub">Enter your credentials to continue</p>
+
+        <!-- Social Login -->
+        <div class="social-btns">
+          <button class="social-btn google" onclick="socialLogin('Google')">
+            <i class="fab fa-google"></i> Continue with Google
+          </button>
+          <button class="social-btn facebook" onclick="socialLogin('Facebook')">
+            <i class="fab fa-facebook-f"></i> Continue with Facebook
+          </button>
+        </div>
+
+        <div class="divider"><span>or login with email</span></div>
+
+        <!-- Login Form -->
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="input-icon">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="login-email" placeholder="your@email.com"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Password <a href="#" class="forgot-link">Forgot password?</a></label>
+          <div class="input-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="login-password" placeholder="Enter your password"/>
+            <i class="fas fa-eye toggle-pwd" onclick="togglePwd('login-password', this)"></i>
+          </div>
+        </div>
+
+        <div class="remember-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="remember"/>
+            <span>Remember me</span>
+          </label>
+        </div>
+
+        <div class="error-msg" id="login-error"></div>
+
+        <button class="btn-auth" onclick="handleLogin()">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+
+        <div class="otp-divider"><span>or</span></div>
+
+        <button class="btn-otp" onclick="showOTP()">
+          <i class="fas fa-mobile-alt"></i> Login with OTP
+        </button>
+
+        <!-- OTP Section -->
+        <div class="otp-section" id="otp-section" style="display:none">
+          <div class="form-group">
+            <label>Mobile Number</label>
+            <div class="input-icon">
+              <i class="fas fa-phone"></i>
+              <input type="tel" id="otp-phone" placeholder="+91 98765 43210"/>
+            </div>
+          </div>
+          <button class="btn-auth" onclick="sendOTP()" style="margin-bottom:15px">
+            <i class="fas fa-paper-plane"></i> Send OTP
+          </button>
+          <div class="otp-inputs" id="otp-inputs" style="display:none">
+            <p style="font-size:0.85rem;color:#777;margin-bottom:10px">Enter the 6-digit OTP sent to your number</p>
+            <div class="otp-boxes">
+              <input type="text" maxlength="1" class="otp-box" oninput="otpNext(this,1)"/>
+              <input type="text" maxlength="1" class="otp-box" oninput="otpNext(this,2)"/>
+              <input type="text" maxlength="1" class="otp-box" oninput="otpNext(this,3)"/>
+              <input type="text" maxlength="1" class="otp-box" oninput="otpNext(this,4)"/>
+              <input type="text" maxlength="1" class="otp-box" oninput="otpNext(this,5)"/>
+              <input type="text" maxlength="1" class="otp-box" oninput="otpNext(this,6)"/>
+            </div>
+            <button class="btn-auth" onclick="verifyOTP()" style="margin-top:15px">
+              <i class="fas fa-check"></i> Verify OTP
+            </button>
+          </div>
+        </div>
+
+        <p class="auth-switch">Don't have an account? <a href="signup.html">Sign Up Free</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Service — Unices Services</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/booking.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-home"></i>
+        <span>Unices <b>Services</b></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="booking.html">Book Now</a></li>
+        <li><a href="login.html" class="btn-login">Login</a></li>
+        <li><a href="signup.html" class="btn-signup">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h1><i class="fas fa-calendar-check"></i> Book a Service</h1>
+    <p>Fill in the details below and we'll send a verified professional to your door</p>
+  </div>
+
+  <!-- PROGRESS STEPS -->
+  <div class="progress-bar">
+    <div class="progress-step active" id="step-indicator-1">
+      <div class="p-num">1</div>
+      <span>Service</span>
+    </div>
+    <div class="progress-line"></div>
+    <div class="progress-step" id="step-indicator-2">
+      <div class="p-num">2</div>
+      <span>Schedule</span>
+    </div>
+    <div class="progress-line"></div>
+    <div class="progress-step" id="step-indicator-3">
+      <div class="p-num">3</div>
+      <span>Details</span>
+    </div>
+    <div class="progress-line"></div>
+    <div class="progress-step" id="step-indicator-4">
+      <div class="p-num">4</div>
+      <span>Confirm</span>
+    </div>
+  </div>
+
+  <div class="booking-wrapper">
+
+    <!-- FORM AREA -->
+    <div class="booking-form-area">
+
+      <!-- STEP 1: Choose Service -->
+      <div class="form-step active" id="step-1">
+        <h2><i class="fas fa-concierge-bell"></i> Choose Your Service</h2>
+        <p class="step-desc">Select the service you need</p>
+
+        <div class="service-select-grid">
+          <div class="svc-option" onclick="selectService(this, 'Home Cleaning', 299)">
+            <i class="fas fa-broom" style="color:#1976d2"></i>
+            <h4>Home Cleaning</h4>
+            <span>From ₹299</span>
+          </div>
+          <div class="svc-option" onclick="selectService(this, 'Beauty & Wellness', 399)">
+            <i class="fas fa-spa" style="color:#e91e63"></i>
+            <h4>Beauty & Wellness</h4>
+            <span>From ₹399</span>
+          </div>
+          <div class="svc-option" onclick="selectService(this, 'Repairs & Fix', 199)">
+            <i class="fas fa-wrench" style="color:#388e3c"></i>
+            <h4>Repairs & Fix</h4>
+            <span>From ₹199</span>
+          </div>
+          <div class="svc-option" onclick="selectService(this, 'Painting', 999)">
+            <i class="fas fa-paint-roller" style="color:#f57c00"></i>
+            <h4>Painting</h4>
+            <span>From ₹999</span>
+          </div>
+          <div class="svc-option" onclick="selectService(this, 'Pest Control', 499)">
+            <i class="fas fa-bug" style="color:#7b1fa2"></i>
+            <h4>Pest Control</h4>
+            <span>From ₹499</span>
+          </div>
+          <div class="svc-option" onclick="selectService(this, 'AC Services', 349)">
+            <i class="fas fa-snowflake" style="color:#0097a7"></i>
+            <h4>AC Services</h4>
+            <span>From ₹349</span>
+          </div>
+        </div>
+
+        <div class="sub-service" id="sub-service-area" style="display:none">
+          <label>Any specific requirement?</label>
+          <select id="sub-service-select">
+            <option>Select specific service...</option>
+          </select>
+        </div>
+
+        <button class="btn-next" onclick="goToStep(2)">
+          Next — Schedule <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- STEP 2: Schedule -->
+      <div class="form-step" id="step-2">
+        <h2><i class="fas fa-calendar-alt"></i> Pick Date & Time</h2>
+        <p class="step-desc">Choose when you want the service</p>
+
+        <div class="form-group">
+          <label><i class="fas fa-calendar"></i> Preferred Date</label>
+          <input type="date" id="booking-date" min=""/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-clock"></i> Preferred Time Slot</label>
+          <div class="time-slots">
+            <div class="time-slot" onclick="selectTime(this)">8:00 AM - 10:00 AM</div>
+            <div class="time-slot" onclick="selectTime(this)">10:00 AM - 12:00 PM</div>
+            <div class="time-slot" onclick="selectTime(this)">12:00 PM - 2:00 PM</div>
+            <div class="time-slot" onclick="selectTime(this)">2:00 PM - 4:00 PM</div>
+            <div class="time-slot" onclick="selectTime(this)">4:00 PM - 6:00 PM</div>
+            <div class="time-slot" onclick="selectTime(this)">6:00 PM - 8:00 PM</div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-back" onclick="goToStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="btn-next" onclick="goToStep(3)">Next — Your Details <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Personal Details -->
+      <div class="form-step" id="step-3">
+        <h2><i class="fas fa-user"></i> Your Details</h2>
+        <p class="step-desc">Tell us where to send our professional</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Full Name</label>
+            <input type="text" id="user-name" placeholder="Enter your full name"/>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Phone Number</label>
+            <input type="tel" id="user-phone" placeholder="+91 98765 43210"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-envelope"></i> Email Address</label>
+          <input type="email" id="user-email" placeholder="your@email.com"/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-map-marker-alt"></i> Full Address</label>
+          <textarea id="user-address" placeholder="House No., Street, Area, City..." rows="3"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-city"></i> City</label>
+            <input type="text" id="user-city" placeholder="Chennai"/>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-mail-bulk"></i> Pincode</label>
+            <input type="text" id="user-pincode" placeholder="600001"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-sticky-note"></i> Special Instructions (Optional)</label>
+          <textarea id="user-notes" placeholder="Any special instructions for the professional..." rows="2"></textarea>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-back" onclick="goToStep(2)"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="btn-next" onclick="goToStep(4)">Review Booking <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Confirmation -->
+      <div class="form-step" id="step-4">
+        <h2><i class="fas fa-check-circle"></i> Review & Confirm</h2>
+        <p class="step-desc">Please review your booking details</p>
+
+        <div class="booking-summary">
+          <div class="summary-row">
+            <span><i class="fas fa-concierge-bell"></i> Service</span>
+            <strong id="s-service">—</strong>
+          </div>
+          <div class="summary-row">
+            <span><i class="fas fa-calendar"></i> Date</span>
+            <strong id="s-date">—</strong>
+          </div>
+          <div class="summary-row">
+            <span><i class="fas fa-clock"></i> Time</span>
+            <strong id="s-time">—</strong>
+          </div>
+          <div class="summary-row">
+            <span><i class="fas fa-user"></i> Name</span>
+            <strong id="s-name">—</strong>
+          </div>
+          <div class="summary-row">
+            <span><i class="fas fa-phone"></i> Phone</span>
+            <strong id="s-phone">—</strong>
+          </div>
+          <div class="summary-row">
+            <span><i class="fas fa-map-marker-alt"></i> Address</span>
+            <strong id="s-address">—</strong>
+          </div>
+          <div class="summary-row total">
+            <span><i class="fas fa-tag"></i> Starting Price</span>
+            <strong id="s-price" style="color:#1a73e8; font-size:1.2rem">—</strong>
+          </div>
+        </div>
+
+        <div class="payment-options">
+          <label><i class="fas fa-credit-card"></i> Payment Method</label>
+          <div class="pay-options">
+            <label class="pay-opt"><input type="radio" name="payment" value="upi" checked/> UPI</label>
+            <label class="pay-opt"><input type="radio" name="payment" value="card"/> Card</label>
+            <label class="pay-opt"><input type="radio" name="payment" value="cod"/> Cash on Delivery</label>
+            <label class="pay-opt"><input type="radio" name="payment" value="netbanking"/> Net Banking</label>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-back" onclick="goToStep(3)"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="btn-confirm" onclick="confirmBooking()">
+            <i class="fas fa-check"></i> Confirm Booking
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="booking-sidebar">
+      <div class="sidebar-card">
+        <h3><i class="fas fa-shield-alt"></i> Why Choose Us?</h3>
+        <ul>
+          <li><i class="fas fa-check" style="color:#1a73e8"></i> Verified Professionals</li>
+          <li><i class="fas fa-check" style="color:#1a73e8"></i> On-time Guarantee</li>
+          <li><i class="fas fa-check" style="color:#1a73e8"></i> Transparent Pricing</li>
+          <li><i class="fas fa-check" style="color:#1a73e8"></i> Free Cancellation</li>
+          <li><i class="fas fa-check" style="color:#1a73e8"></i> 4.8★ Rated Service</li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h3><i class="fas fa-headset"></i> Need Help?</h3>
+        <p>Our support team is available 24/7</p>
+        <a href="tel:+919876543210" class="help-btn">
+          <i class="fas fa-phone"></i> +91 98765 43210
+        </a>
+      </div>
+      <div class="sidebar-card promo-card">
+        <h3>🎉 First Booking Offer!</h3>
+        <p>Get <strong>20% OFF</strong> on your first booking</p>
+        <div class="promo-code">FIRST20</div>
+        <small>Apply at checkout</small>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SUCCESS POPUP -->
+  <div class="success-overlay" id="success-overlay">
+    <div class="success-box">
+      <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+      <h2>Booking Confirmed! 🎉</h2>
+      <p>Your booking has been successfully placed!</p>
+      <div class="booking-id">Booking ID: <strong id="booking-id-display"></strong></div>
+      <p style="color:#777; font-size:0.9rem; margin-top:10px">
+        You'll receive a confirmation on your phone & email shortly.
+      </p>
+      <div class="success-actions">
+        <a href="dashboard.html" class="btn-dashboard">View My Bookings</a>
+        <a href="index.html" class="btn-home">Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/booking.js"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services — Unices Services</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/services.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-home"></i>
+        <span>Unices <b>Services</b></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" style="color:#1a73e8">Services</a></li>
+        <li><a href="booking.html">Book Now</a></li>
+        <li><a href="login.html" class="btn-login">Login</a></li>
+        <li><a href="signup.html" class="btn-signup">Sign Up</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <h1>Our Services</h1>
+    <p>Choose from 20+ professional home services</p>
+  </section>
+
+  <!-- FILTER BAR -->
+  <section class="filter-section">
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterServices('all', this)">All</button>
+      <button class="filter-btn" onclick="filterServices('cleaning', this)">🧹 Cleaning</button>
+      <button class="filter-btn" onclick="filterServices('beauty', this)">💄 Beauty</button>
+      <button class="filter-btn" onclick="filterServices('repair', this)">🔧 Repairs</button>
+      <button class="filter-btn" onclick="filterServices('painting', this)">🎨 Painting</button>
+      <button class="filter-btn" onclick="filterServices('pest', this)">🐛 Pest Control</button>
+      <button class="filter-btn" onclick="filterServices('ac', this)">❄️ AC Services</button>
+    </div>
+    <div class="search-filter">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search services..." oninput="searchServices()"/>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="services-section">
+    <div class="services-grid" id="services-grid">
+
+      <!-- Cleaning -->
+      <div class="service-card" data-category="cleaning">
+        <div class="card-badge">Most Popular</div>
+        <div class="card-icon" style="background:#e3f2fd">
+          <i class="fas fa-broom" style="color:#1976d2"></i>
+        </div>
+        <div class="card-body">
+          <h3>Home Deep Cleaning</h3>
+          <p>Complete deep cleaning of your entire home including kitchen, bathrooms, and all rooms.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 3-4 hrs</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.8 (2.3k)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹599</span>
+            <a href="booking.html?service=Home Deep Cleaning" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="cleaning">
+        <div class="card-icon" style="background:#e3f2fd">
+          <i class="fas fa-couch" style="color:#1976d2"></i>
+        </div>
+        <div class="card-body">
+          <h3>Sofa Cleaning</h3>
+          <p>Professional sofa and upholstery cleaning using advanced foam technology.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 1-2 hrs</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.7 (1.1k)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹299</span>
+            <a href="booking.html?service=Sofa Cleaning" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="cleaning">
+        <div class="card-icon" style="background:#e3f2fd">
+          <i class="fas fa-toilet" style="color:#1976d2"></i>
+        </div>
+        <div class="card-body">
+          <h3>Bathroom Cleaning</h3>
+          <p>Deep scrubbing, disinfection and sanitization of all bathrooms.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 1 hr</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.6 (980)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹199</span>
+            <a href="booking.html?service=Bathroom Cleaning" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beauty -->
+      <div class="service-card" data-category="beauty">
+        <div class="card-badge" style="background:#fce4ec;color:#e91e63">Trending</div>
+        <div class="card-icon" style="background:#fce4ec">
+          <i class="fas fa-spa" style="color:#e91e63"></i>
+        </div>
+        <div class="card-body">
+          <h3>Facial & Cleanup</h3>
+          <p>Relaxing facial treatments done by certified beauty professionals at your home.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 1-2 hrs</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.9 (3.1k)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹399</span>
+            <a href="booking.html?service=Facial & Cleanup" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="beauty">
+        <div class="card-icon" style="background:#fce4ec">
+          <i class="fas fa-cut" style="color:#e91e63"></i>
+        </div>
+        <div class="card-body">
+          <h3>Hair Care at Home</h3>
+          <p>Professional haircut, hair spa, and styling at your doorstep.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 1 hr</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.7 (1.8k)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹449</span>
+            <a href="booking.html?service=Hair Care" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="beauty">
+        <div class="card-icon" style="background:#fce4ec">
+          <i class="fas fa-hand-sparkles" style="color:#e91e63"></i>
+        </div>
+        <div class="card-body">
+          <h3>Waxing & Threading</h3>
+          <p>Full body waxing, eyebrow threading and grooming services at home.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 1-2 hrs</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.6 (2.2k)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹349</span>
+            <a href="booking.html?service=Waxing & Threading" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repairs -->
+      <div class="service-card" data-category="repair">
+        <div class="card-icon" style="background:#e8f5e9">
+          <i class="fas fa-bolt" style="color:#388e3c"></i>
+        </div>
+        <div class="card-body">
+          <h3>Electrician</h3>
+          <p>Wiring, switches, fan installation, short circuit fixes and more.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 1-2 hrs</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.7 (1.5k)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹199</span>
+            <a href="booking.html?service=Electrician" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="repair">
+        <div class="card-icon" style="background:#e8f5e9">
+          <i class="fas fa-faucet" style="color:#388e3c"></i>
+        </div>
+        <div class="card-body">
+          <h3>Plumber</h3>
+          <p>Leakage repair, pipe fitting, tap installation and bathroom plumbing.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 1-2 hrs</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.6 (1.2k)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹249</span>
+            <a href="booking.html?service=Plumber" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Painting -->
+      <div class="service-card" data-category="painting">
+        <div class="card-icon" style="background:#fff3e0">
+          <i class="fas fa-paint-roller" style="color:#f57c00"></i>
+        </div>
+        <div class="card-body">
+          <h3>Interior Painting</h3>
+          <p>Full home interior painting with premium quality paints and skilled painters.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 2-3 days</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.8 (890)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹999</span>
+            <a href="booking.html?service=Interior Painting" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pest Control -->
+      <div class="service-card" data-category="pest">
+        <div class="card-icon" style="background:#f3e5f5">
+          <i class="fas fa-bug" style="color:#7b1fa2"></i>
+        </div>
+        <div class="card-body">
+          <h3>Cockroach Control</h3>
+          <p>Gel-based treatment that eliminates cockroaches completely. 100% safe.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 1 hr</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.7 (2.0k)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹499</span>
+            <a href="booking.html?service=Cockroach Control" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- AC -->
+      <div class="service-card" data-category="ac">
+        <div class="card-icon" style="background:#e0f7fa">
+          <i class="fas fa-snowflake" style="color:#0097a7"></i>
+        </div>
+        <div class="card-body">
+          <h3>AC Service & Repair</h3>
+          <p>AC gas refill, deep cleaning, filter wash and general servicing.</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> 1-2 hrs</span>
+            <span><i class="fas fa-star" style="color:#f5a623"></i> 4.8 (1.7k)</span>
+          </div>
+          <div class="card-footer">
+            <span class="price">₹349</span>
+            <a href="booking.html?service=AC Service" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CHATBOT -->
+  <div class="chatbot-bubble" onclick="toggleChat()">
+    <i class="fas fa-robot"></i>
+  </div>
+  <div class="chatbot-box" id="chatbot-box">
+    <div class="chat-header">
+      <i class="fas fa-robot"></i>
+      <div><h4>Uni — AI Assistant</h4><span>Online</span></div>
+      <button onclick="toggleChat()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg bot">👋 Hi! Looking for a service? I can help you pick the right one!</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chat-input" placeholder="Ask me anything..." onkeypress="handleKey(event)"/>
+      <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/services.js"></script>
+</body>
+</html>

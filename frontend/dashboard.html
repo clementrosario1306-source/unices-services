@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Dashboard — Unices Services</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/dashboard.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-home"></i>
+        <span>Unices <b>Services</b></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="booking.html">Book Now</a></li>
+        <li><a href="#" onclick="logout()" class="btn-login">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar">
+      <div class="user-profile-card">
+        <div class="user-avatar" id="user-avatar">U</div>
+        <h3 id="user-name-display">Loading...</h3>
+        <p id="user-email-display">loading@email.com</p>
+        <span class="member-badge"><i class="fas fa-star"></i> Premium Member</span>
+      </div>
+
+      <nav class="side-nav">
+        <a href="#" class="side-link active" onclick="showTab('bookings', this)">
+          <i class="fas fa-calendar-check"></i> My Bookings
+        </a>
+        <a href="#" class="side-link" onclick="showTab('profile', this)">
+          <i class="fas fa-user"></i> My Profile
+        </a>
+        <a href="#" class="side-link" onclick="showTab('addresses', this)">
+          <i class="fas fa-map-marker-alt"></i> Saved Addresses
+        </a>
+        <a href="#" class="side-link" onclick="showTab('offers', this)">
+          <i class="fas fa-tag"></i> Offers & Coupons
+        </a>
+        <a href="#" class="side-link" onclick="showTab('help', this)">
+          <i class="fas fa-headset"></i> Help & Support
+        </a>
+        <a href="#" class="side-link logout-link" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dash-main">
+
+      <!-- ===== TAB: MY BOOKINGS ===== -->
+      <div class="tab-content active" id="tab-bookings">
+        <div class="dash-header">
+          <h2><i class="fas fa-calendar-check"></i> My Bookings</h2>
+          <a href="booking.html" class="btn-new-booking"><i class="fas fa-plus"></i> New Booking</a>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row" id="stats-row">
+          <div class="stat-card blue"><i class="fas fa-list"></i><div><h3 id="total-count">0</h3><p>Total Bookings</p></div></div>
+          <div class="stat-card green"><i class="fas fa-check-circle"></i><div><h3 id="confirmed-count">0</h3><p>Confirmed</p></div></div>
+          <div class="stat-card orange"><i class="fas fa-clock"></i><div><h3 id="pending-count">0</h3><p>Pending</p></div></div>
+          <div class="stat-card purple"><i class="fas fa-flag-checkered"></i><div><h3 id="completed-count">0</h3><p>Completed</p></div></div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="booking-filters">
+          <button class="filter-btn active" onclick="filterBookings('all', this)">All</button>
+          <button class="filter-btn" onclick="filterBookings('Confirmed', this)">Confirmed</button>
+          <button class="filter-btn" onclick="filterBookings('Pending', this)">Pending</button>
+          <button class="filter-btn" onclick="filterBookings('Completed', this)">Completed</button>
+          <button class="filter-btn" onclick="filterBookings('Cancelled', this)">Cancelled</button>
+        </div>
+
+        <!-- Bookings List -->
+        <div id="bookings-list"></div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state" style="display:none">
+          <i class="fas fa-calendar-times"></i>
+          <h3>No bookings yet!</h3>
+          <p>Book your first service and it will appear here.</p>
+          <a href="booking.html" class="btn-new-booking">Book a Service</a>
+        </div>
+      </div>
+
+      <!-- ===== TAB: PROFILE ===== -->
+      <div class="tab-content" id="tab-profile">
+        <div class="dash-header">
+          <h2><i class="fas fa-user"></i> My Profile</h2>
+          <button class="btn-new-booking" onclick="saveProfile()"><i class="fas fa-save"></i> Save Changes</button>
+        </div>
+        <div class="profile-card">
+          <div class="profile-avatar-big" id="profile-avatar-big">U</div>
+          <div class="profile-form">
+            <div class="form-row-dash">
+              <div class="form-group-dash">
+                <label>First Name</label>
+                <input type="text" id="p-fname" placeholder="First Name"/>
+              </div>
+              <div class="form-group-dash">
+                <label>Last Name</label>
+                <input type="text" id="p-lname" placeholder="Last Name"/>
+              </div>
+            </div>
+            <div class="form-group-dash">
+              <label>Email Address</label>
+              <input type="email" id="p-email" placeholder="your@email.com"/>
+            </div>
+            <div class="form-group-dash">
+              <label>Mobile Number</label>
+              <input type="tel" id="p-phone" placeholder="+91 98765 43210"/>
+            </div>
+            <div class="form-group-dash">
+              <label>City</label>
+              <input type="text" id="p-city" placeholder="Your city"/>
+            </div>
+            <div class="form-group-dash">
+              <label>Member Since</label>
+              <input type="text" id="p-joined" readonly style="background:#f5f5f5; color:#999"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TAB: ADDRESSES ===== -->
+      <div class="tab-content" id="tab-addresses">
+        <div class="dash-header">
+          <h2><i class="fas fa-map-marker-alt"></i> Saved Addresses</h2>
+          <button class="btn-new-booking" onclick="showAddressForm()"><i class="fas fa-plus"></i> Add Address</button>
+        </div>
+        <div id="addresses-list">
+          <div class="address-card">
+            <div class="addr-icon home"><i class="fas fa-home"></i></div>
+            <div class="addr-details">
+              <h4>Home <span class="default-badge">Default</span></h4>
+              <p id="home-address-text">No address saved yet. Add one from your booking!</p>
+            </div>
+            <button class="addr-edit"><i class="fas fa-pencil-alt"></i></button>
+          </div>
+          <div class="address-card">
+            <div class="addr-icon office"><i class="fas fa-briefcase"></i></div>
+            <div class="addr-details">
+              <h4>Office</h4>
+              <p>Not added yet</p>
+            </div>
+            <button class="addr-edit" onclick="showAddressForm()"><i class="fas fa-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TAB: OFFERS ===== -->
+      <div class="tab-content" id="tab-offers">
+        <div class="dash-header"><h2><i class="fas fa-tag"></i> Offers & Coupons</h2></div>
+        <div class="offers-grid">
+          <div class="offer-card">
+            <div class="offer-badge">20% OFF</div>
+            <h3>First Booking Offer</h3>
+            <p>Get 20% off on your very first booking with Unices Services</p>
+            <div class="coupon-code">FIRST20</div>
+            <button onclick="copyCode('FIRST20')"><i class="fas fa-copy"></i> Copy Code</button>
+          </div>
+          <div class="offer-card">
+            <div class="offer-badge">₹100 OFF</div>
+            <h3>Cleaning Special</h3>
+            <p>Flat ₹100 off on any cleaning service above ₹499</p>
+            <div class="coupon-code">CLEAN100</div>
+            <button onclick="copyCode('CLEAN100')"><i class="fas fa-copy"></i> Copy Code</button>
+          </div>
+          <div class="offer-card">
+            <div class="offer-badge">15% OFF</div>
+            <h3>Beauty & Wellness</h3>
+            <p>15% off on all beauty and wellness services this week</p>
+            <div class="coupon-code">BEAUTY15</div>
+            <button onclick="copyCode('BEAUTY15')"><i class="fas fa-copy"></i> Copy Code</button>
+          </div>
+          <div class="offer-card">
+            <div class="offer-badge">FREE</div>
+            <h3>Refer & Earn</h3>
+            <p>Refer a friend and both of you get ₹200 off on next booking</p>
+            <div class="coupon-code" id="refer-code">REF-LOADING</div>
+            <button onclick="copyCode(document.getElementById('refer-code').textContent)"><i class="fas fa-share-alt"></i> Share & Earn</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TAB: HELP ===== -->
+      <div class="tab-content" id="tab-help">
+        <div class="dash-header"><h2><i class="fas fa-headset"></i> Help & Support</h2></div>
+        <div class="help-grid">
+          <div class="help-card" onclick="window.location.href='tel:+919876543210'">
+            <i class="fas fa-phone" style="color:#1a73e8"></i>
+            <h3>Call Us</h3>
+            <p>+91 98765 43210</p>
+            <span>Available 24/7</span>
+          </div>
+          <div class="help-card" onclick="window.location.href='mailto:hello@unices.in'">
+            <i class="fas fa-envelope" style="color:#e91e63"></i>
+            <h3>Email Us</h3>
+            <p>hello@unices.in</p>
+            <span>Reply within 2 hours</span>
+          </div>
+          <div class="help-card">
+            <i class="fas fa-robot" style="color:#4caf50"></i>
+            <h3>AI Chat Support</h3>
+            <p>Chat with Uni</p>
+            <span>Instant replies</span>
+          </div>
+        </div>
+        <div class="faq-section">
+          <h3>Frequently Asked Questions</h3>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">How do I cancel a booking? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-a">Go to My Bookings, find your booking and click the Cancel button. Cancellations are free up to 2 hours before the scheduled time.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">How do I reschedule? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-a">Click the Reschedule button on your booking card and pick a new date and time slot.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">When will I get a refund? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-a">Refunds are processed within 5-7 business days to your original payment method.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">Are the professionals verified? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-a">Yes! All Unices professionals go through background checks, skill tests, and identity verification before joining our platform.</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- CANCEL MODAL -->
+  <div class="modal-overlay" id="cancel-modal">
+    <div class="modal-box">
+      <i class="fas fa-exclamation-triangle" style="color:#ff9800;font-size:2.5rem;margin-bottom:15px"></i>
+      <h3>Cancel Booking?</h3>
+      <p>Are you sure you want to cancel this booking? This action cannot be undone.</p>
+      <div class="modal-btns">
+        <button onclick="closeModal()" class="btn-no">No, Keep It</button>
+        <button onclick="confirmCancel()" class="btn-yes">Yes, Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
