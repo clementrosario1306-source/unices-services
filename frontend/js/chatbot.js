@@ -1,4 +1,4 @@
-const CHAT_API = 'http://localhost:5000/api/chat';
+const CHAT_API = 'https://unices-services-1.onrender.com/api/chat';
 
 function toggleChat() {
   document.getElementById('chatbot-box').classList.toggle('open');
