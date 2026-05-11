@@ -48,29 +48,29 @@ body {
 .hero-content h1 span { color: #1a73e8; }
 .hero-content p { font-size: 1.1rem; color: #555; margin-bottom: 35px; }
 
+/* ===== SEARCH BAR (UPDATED) ===== */
 .search-bar {
   display: flex; align-items: center; gap: 10px;
   background: #fff;
   padding: 8px 8px 8px 15px;
   border-radius: 50px;
   box-shadow: 0 5px 25px rgba(0,0,0,0.12);
-  max-width: 600px;
+  max-width: 650px;
 }
-.search-bar i { color: #1a73e8; font-size: 1.1rem; }
-.search-bar input {
-  flex: 1; border: none; outline: none;
-  font-family: 'Poppins', sans-serif; font-size: 0.95rem;
-}
+.search-bar i { color: #1a73e8; font-size: 1.1rem; flex-shrink: 0; }
 .search-bar select {
   border: none; outline: none; background: #f5f5f5;
   padding: 8px 12px; border-radius: 20px;
   font-family: 'Poppins', sans-serif; color: #555;
+  font-size: 0.88rem; cursor: pointer;
 }
+#location-select { flex: 1; }
 .search-bar button {
   background: #1a73e8; color: #fff; border: none;
   padding: 12px 25px; border-radius: 40px;
   font-family: 'Poppins', sans-serif; font-weight: 600;
   cursor: pointer; transition: background 0.3s;
+  white-space: nowrap; flex-shrink: 0;
 }
 .search-bar button:hover { background: #0d47a1; }
 
@@ -290,7 +290,10 @@ body {
   .hero-content h1 { font-size: 2rem; }
   .hero-image { display: none; }
   .hero-stats { justify-content: center; flex-wrap: wrap; gap: 20px; }
-  .search-bar { flex-wrap: wrap; border-radius: 15px; }
+  .search-bar { flex-wrap: wrap; border-radius: 15px; padding: 10px; }
+  .search-bar select { width: 100%; }
+  .search-bar button { width: 100%; justify-content: center; }
+  #location-select { width: 100%; }
   .nav-links { display: none; }
   .hamburger { display: block; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -298,7 +301,8 @@ body {
   .step-arrow { transform: rotate(90deg); }
   .chatbot-box { width: 90%; right: 5%; }
 }
-/* Typing animation */
+
+/* ===== TYPING ANIMATION ===== */
 .typing-dots { display: flex; gap: 4px; align-items: center; padding: 4px 0; }
 .typing-dots span {
   width: 8px; height: 8px; border-radius: 50%;

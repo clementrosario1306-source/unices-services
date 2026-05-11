@@ -37,16 +37,82 @@
       <p>Book trusted professionals for cleaning, repairs, beauty & more. Fast, reliable and affordable.</p>
       <div class="search-bar">
         <i class="fas fa-map-marker-alt"></i>
-        <input type="text" placeholder="Enter your location..." />
-        <select>
+        <select id="location-select">
+          <option value="">Select your city...</option>
+          <optgroup label="Major Cities">
+            <option>Chennai</option>
+            <option>Coimbatore</option>
+            <option>Madurai</option>
+            <option>Tiruchirappalli</option>
+            <option>Salem</option>
+            <option>Tirunelveli</option>
+            <option>Vellore</option>
+            <option>Erode</option>
+            <option>Thoothukudi</option>
+            <option>Dindigul</option>
+          </optgroup>
+          <optgroup label="Other Cities">
+            <option>Ambattur</option>
+            <option>Avadi</option>
+            <option>Thanjavur</option>
+            <option>Tiruppur</option>
+            <option>Karur</option>
+            <option>Kumbakonam</option>
+            <option>Nagercoil</option>
+            <option>Kanchipuram</option>
+            <option>Cuddalore</option>
+            <option>Villupuram</option>
+            <option>Tambaram</option>
+            <option>Hosur</option>
+            <option>Rajapalayam</option>
+            <option>Namakkal</option>
+            <option>Pudukkottai</option>
+            <option>Sivakasi</option>
+            <option>Pollachi</option>
+            <option>Udhagamandalam (Ooty)</option>
+            <option>Kodaikanal</option>
+            <option>Dharapuram</option>
+            <option>Palani</option>
+            <option>Gobichettipalayam</option>
+            <option>Bhavani</option>
+            <option>Virudhunagar</option>
+            <option>Paramakudi</option>
+            <option>Aruppukkottai</option>
+            <option>Sivaganga</option>
+            <option>Karaikudi</option>
+            <option>Mayiladuthurai</option>
+            <option>Nagapattinam</option>
+            <option>Chidambaram</option>
+            <option>Neyveli</option>
+            <option>Tindivanam</option>
+            <option>Ranipet</option>
+            <option>Ambur</option>
+            <option>Vaniyambadi</option>
+            <option>Gudiyatham</option>
+            <option>Tiruvannamalai</option>
+            <option>Krishnagiri</option>
+            <option>Dharmapuri</option>
+            <option>Theni</option>
+            <option>Bodinayakanur</option>
+            <option>Periyakulam</option>
+            <option>Arakkonam</option>
+            <option>Tiruttani</option>
+            <option>Poonamallee</option>
+            <option>Thiruvallur</option>
+            <option>Gummidipoondi</option>
+            <option>Pondicherry (Puducherry)</option>
+          </optgroup>
+        </select>
+        <select id="service-select">
           <option>All Services</option>
           <option>Cleaning</option>
           <option>Beauty</option>
           <option>Repairs</option>
           <option>Painting</option>
           <option>Pest Control</option>
+          <option>AC Services</option>
         </select>
-        <button onclick="window.location.href='services.html'">
+        <button onclick="searchServices()">
           <i class="fas fa-search"></i> Search
         </button>
       </div>

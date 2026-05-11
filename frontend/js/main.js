@@ -1,5 +1,3 @@
-// ===== main.js =====
-
 // Mobile menu toggle
 function toggleMenu() {
   const nav = document.querySelector('.nav-links');
@@ -18,7 +16,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 // Animate cards on scroll
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) e.target.style.opacity = '1', e.target.style.transform = 'translateY(0)';
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
   });
 }, { threshold: 0.1 });
 
@@ -28,3 +29,14 @@ document.querySelectorAll('.category-card, .step, .testimonial-card').forEach(el
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
 });
+
+// Search function
+function searchServices() {
+  const location = document.getElementById('location-select').value;
+  const service  = document.getElementById('service-select').value;
+  if (!location) return alert('❌ Please select your city first!');
+  const params = new URLSearchParams();
+  params.set('city', location);
+  if (service !== 'All Services') params.set('service', service);
+  window.location.href = `services.html?${params.toString()}`;
+}
