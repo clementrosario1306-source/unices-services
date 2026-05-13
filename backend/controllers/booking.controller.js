@@ -10,13 +10,39 @@ exports.createBooking = async (req, res) => {
   }
 };
 
-// GET ALL BOOKINGS (for a user)
-exports.getBookings = async (req, res) => {
+// GET USER'S OWN BOOKINGS
+exports.getUserBookings = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const bookings = await Booking.find({ userId }).sort({ createdAt: -1 });
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching bookings', error: err.message });
+  }
+};
+
+// GET ALL BOOKINGS (Admin only)
+exports.getAllBookings = async (req, res) => {
   try {
     const bookings = await Booking.find().sort({ createdAt: -1 });
     res.json(bookings);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching bookings', error: err.message });
+  }
+};
+
+// UPDATE BOOKING STATUS (Admin only)
+exports.updateStatus = async (req, res) => {
+  try {
+    const { status, staffName } = req.body;
+    const booking = await Booking.findByIdAndUpdate(
+      req.params.id,
+      { status, staffName },
+      { new: true }
+    );
+    res.json({ message: '✅ Booking updated!', booking });
+  } catch (err) {
+    res.status(500).json({ message: 'Error updating booking', error: err.message });
   }
 };
 
@@ -27,5 +53,27 @@ exports.cancelBooking = async (req, res) => {
     res.json({ message: 'Booking cancelled!' });
   } catch (err) {
     res.status(500).json({ message: 'Error cancelling booking', error: err.message });
+  }
+};
+
+// GET ADMIN STATS
+exports.getStats = async (req, res) => {
+  try {
+    const total     = await Booking.countDocuments();
+    const pending   = await Booking.countDocuments({ status: 'Pending' });
+    const confirmed = await Booking.countDocuments({ status: 'Confirmed' });
+    const completed = await Booking.countDocuments({ status: 'Completed' });
+    const cancelled = await Booking.countDocuments({ status: 'Cancelled' });
+
+    // Revenue from completed bookings
+    const revenueData = await Booking.aggregate([
+      { $match: { status: 'Completed' } },
+      { $group: { _id: null, total: { $sum: '$price' } } }
+    ]);
+    const revenue = revenueData[0]?.total || 0;
+
+    res.json({ total, pending, confirmed, completed, cancelled, revenue });
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching stats', error: err.message });
   }
 };

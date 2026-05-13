@@ -111,11 +111,15 @@ async function confirmBooking() {
   btn.textContent = '⏳ Confirming...';
   btn.disabled = true;
 
+  // Get logged in user
+  const user = JSON.parse(localStorage.getItem('user'));
+
   try {
     const res  = await fetch(`${API}/bookings`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        userId:   user?.id || 'guest',
         name:     bookingData.name,
         phone:    bookingData.phone,
         email:    bookingData.email,

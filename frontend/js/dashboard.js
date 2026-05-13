@@ -36,14 +36,18 @@ function loadUserInfo() {
 
 // ===== LOAD BOOKINGS =====
 async function loadBookings() {
-  const list = document.getElementById('bookings-list');
+  const list  = document.getElementById('bookings-list');
   const empty = document.getElementById('empty-state');
   list.innerHTML = '<p style="padding:20px;color:#999">⏳ Loading bookings...</p>';
 
   try {
-    const res      = await fetch(`${API}/bookings`);
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+      window.location.href = 'login.html';
+      return;
+    }
+    const res      = await fetch(`${API}/bookings/user/${user.id}`);
     allBookings    = await res.json();
-
     updateStats(allBookings);
     renderBookings(allBookings);
   } catch {

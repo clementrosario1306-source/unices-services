@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel — Unices Services</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/admin.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- ADMIN LOGIN SCREEN -->
+  <div class="admin-login" id="admin-login">
+    <div class="login-box">
+      <div class="admin-logo">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <h2>Admin Login</h2>
+      <p>Unices Services Admin Panel</p>
+      <div class="form-group">
+        <input type="text" id="admin-user" placeholder="Admin Username"/>
+      </div>
+      <div class="form-group">
+        <input type="password" id="admin-pass" placeholder="Admin Password"/>
+      </div>
+      <div id="admin-error" style="color:red;font-size:0.85rem;margin-bottom:10px"></div>
+      <button onclick="adminLogin()">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+  <div class="admin-dashboard" id="admin-dashboard" style="display:none">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <i class="fas fa-home"></i>
+        <span>Unices <b>Admin</b></span>
+      </div>
+      <nav class="admin-nav">
+        <a href="#" class="admin-link active" onclick="showAdminTab('overview', this)">
+          <i class="fas fa-chart-pie"></i> Overview
+        </a>
+        <a href="#" class="admin-link" onclick="showAdminTab('bookings', this)">
+          <i class="fas fa-calendar-check"></i> All Bookings
+        </a>
+        <a href="#" class="admin-link" onclick="showAdminTab('staff', this)">
+          <i class="fas fa-users"></i> Staff Management
+        </a>
+        <a href="#" class="admin-link logout" onclick="adminLogout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+
+      <!-- OVERVIEW TAB -->
+      <div class="admin-tab active" id="tab-overview">
+        <h2 class="tab-title">📊 Dashboard Overview</h2>
+
+        <!-- Stats Cards -->
+        <div class="admin-stats">
+          <div class="stat-box blue">
+            <i class="fas fa-calendar-check"></i>
+            <div><h3 id="a-total">0</h3><p>Total Bookings</p></div>
+          </div>
+          <div class="stat-box green">
+            <i class="fas fa-check-circle"></i>
+            <div><h3 id="a-completed">0</h3><p>Completed</p></div>
+          </div>
+          <div class="stat-box orange">
+            <i class="fas fa-clock"></i>
+            <div><h3 id="a-pending">0</h3><p>Pending</p></div>
+          </div>
+          <div class="stat-box purple">
+            <i class="fas fa-rupee-sign"></i>
+            <div><h3 id="a-revenue">₹0</h3><p>Total Revenue</p></div>
+          </div>
+        </div>
+
+        <!-- Recent Bookings -->
+        <div class="admin-card">
+          <h3><i class="fas fa-clock"></i> Recent Bookings</h3>
+          <div id="recent-bookings"></div>
+        </div>
+      </div>
+
+      <!-- ALL BOOKINGS TAB -->
+      <div class="admin-tab" id="tab-bookings">
+        <div class="tab-header">
+          <h2 class="tab-title">📋 All Bookings</h2>
+          <div class="booking-filters">
+            <button class="filter-btn active" onclick="filterAdmin('all', this)">All</button>
+            <button class="filter-btn" onclick="filterAdmin('Pending', this)">Pending</button>
+            <button class="filter-btn" onclick="filterAdmin('Confirmed', this)">Confirmed</button>
+            <button class="filter-btn" onclick="filterAdmin('Completed', this)">Completed</button>
+            <button class="filter-btn" onclick="filterAdmin('Cancelled', this)">Cancelled</button>
+          </div>
+        </div>
+        <div id="all-bookings-list"></div>
+      </div>
+
+      <!-- STAFF TAB -->
+      <div class="admin-tab" id="tab-staff">
+        <h2 class="tab-title">👥 Staff Management</h2>
+        <div class="staff-grid" id="staff-grid">
+          <div class="staff-card">
+            <div class="staff-avatar">R</div>
+            <h4>Ravi Kumar</h4>
+            <p>Cleaning Specialist</p>
+            <span class="staff-status available">Available</span>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">P</div>
+            <h4>Priya Devi</h4>
+            <p>Beauty Expert</p>
+            <span class="staff-status available">Available</span>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">M</div>
+            <h4>Muthu Raj</h4>
+            <p>Electrician</p>
+            <span class="staff-status busy">On Job</span>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">S</div>
+            <h4>Senthil Kumar</h4>
+            <p>Plumber</p>
+            <span class="staff-status available">Available</span>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">A</div>
+            <h4>Anitha M</h4>
+            <p>Beauty Expert</p>
+            <span class="staff-status busy">On Job</span>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">K</div>
+            <h4>Karthik S</h4>
+            <p>AC Technician</p>
+            <span class="staff-status available">Available</span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- STATUS UPDATE MODAL -->
+  <div class="modal-overlay" id="status-modal">
+    <div class="modal-box">
+      <h3><i class="fas fa-edit"></i> Update Booking</h3>
+      <p style="color:#777;margin-bottom:20px">Booking ID: <strong id="modal-booking-id"></strong></p>
+      <div class="form-group-dash">
+        <label>Update Status</label>
+        <select id="new-status">
+          <option value="Pending">Pending</option>
+          <option value="Confirmed">Confirmed</option>
+          <option value="Completed">Completed</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </div>
+      <div class="form-group-dash">
+        <label>Assign Staff</label>
+        <select id="assign-staff">
+          <option value="">Not Assigned</option>
+          <option>Ravi Kumar</option>
+          <option>Priya Devi</option>
+          <option>Muthu Raj</option>
+          <option>Senthil Kumar</option>
+          <option>Anitha M</option>
+          <option>Karthik S</option>
+        </select>
+      </div>
+      <div class="modal-btns">
+        <button onclick="closeStatusModal()" class="btn-no">Cancel</button>
+        <button onclick="saveStatus()" class="btn-yes" style="background:#1a73e8">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

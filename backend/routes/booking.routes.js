@@ -1,14 +1,18 @@
+const router = require('express').Router();
+const {
+  createBooking,
+  getUserBookings,
+  getAllBookings,
+  updateStatus,
+  cancelBooking,
+  getStats
+} = require('../controllers/booking.controller');
 
+router.post('/',                createBooking);    // Create booking
+router.get('/user/:userId',     getUserBookings);  // User's bookings
+router.get('/all',              getAllBookings);    // Admin - all bookings
+router.get('/stats',            getStats);         // Admin - stats
+router.put('/status/:id',       updateStatus);     // Admin - update status
+router.put('/cancel/:id',       cancelBooking);    // Cancel booking
 
-
-// ===== booking.routes.js =====
-// Save this as: backend/routes/booking.routes.js
-
-const router2 = require('express').Router();
-const { createBooking, getBookings, cancelBooking } = require('../controllers/booking.controller');
-
-router2.post('/', createBooking);
-router2.get('/', getBookings);
-router2.put('/cancel/:id', cancelBooking);
-
-module.exports = router2;
+module.exports = router;
