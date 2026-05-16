@@ -56,7 +56,20 @@ exports.cancelBooking = async (req, res) => {
   }
 };
 
-// GET ADMIN STATS
+// ADD REVIEW
+exports.addReview = async (req, res) => {
+  try {
+    const { rating, review } = req.body;
+    const booking = await Booking.findByIdAndUpdate(
+      req.params.id,
+      { rating, review, reviewDate: new Date().toISOString().split('T')[0] },
+      { new: true }
+    );
+    res.json({ message: '✅ Review added!', booking });
+  } catch (err) {
+    res.status(500).json({ message: 'Error adding review', error: err.message });
+  }
+};
 exports.getStats = async (req, res) => {
   try {
     const total     = await Booking.countDocuments();

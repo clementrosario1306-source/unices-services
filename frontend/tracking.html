@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Booking — Unices Services</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/tracking.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-home"></i>
+        <span>Unices <b>Services</b></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="dashboard.html">My Bookings</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <h1><i class="fas fa-map-marker-alt"></i> Track Your Booking</h1>
+    <p>Enter your booking ID to track real-time status</p>
+  </section>
+
+  <!-- SEARCH BOX -->
+  <div class="track-search">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="booking-id-input" placeholder="Enter Booking ID (e.g. D7C032D7)"/>
+      <button onclick="trackBooking()">Track</button>
+    </div>
+  </div>
+
+  <!-- TRACKING RESULT -->
+  <div class="track-result" id="track-result" style="display:none">
+
+    <!-- Booking Info -->
+    <div class="booking-info-card">
+      <div class="bic-header">
+        <div>
+          <h2 id="t-service">—</h2>
+          <p id="t-id">Booking ID: —</p>
+        </div>
+        <span class="status-badge" id="t-status-badge">—</span>
+      </div>
+      <div class="bic-details">
+        <div class="bic-detail">
+          <i class="fas fa-calendar"></i>
+          <div><small>Date</small><p id="t-date">—</p></div>
+        </div>
+        <div class="bic-detail">
+          <i class="fas fa-clock"></i>
+          <div><small>Time</small><p id="t-time">—</p></div>
+        </div>
+        <div class="bic-detail">
+          <i class="fas fa-map-marker-alt"></i>
+          <div><small>Address</small><p id="t-address">—</p></div>
+        </div>
+        <div class="bic-detail">
+          <i class="fas fa-user-tie"></i>
+          <div><small>Assigned Staff</small><p id="t-staff">—</p></div>
+        </div>
+        <div class="bic-detail">
+          <i class="fas fa-rupee-sign"></i>
+          <div><small>Amount</small><p id="t-price">—</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Timeline -->
+    <div class="timeline-card">
+      <h3>Booking Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-step" id="tl-pending">
+          <div class="tl-icon"><i class="fas fa-clipboard-list"></i></div>
+          <div class="tl-content">
+            <h4>Booking Received</h4>
+            <p>Your booking has been received and is being reviewed</p>
+          </div>
+        </div>
+        <div class="timeline-step" id="tl-confirmed">
+          <div class="tl-icon"><i class="fas fa-check-circle"></i></div>
+          <div class="tl-content">
+            <h4>Booking Confirmed</h4>
+            <p>Your booking is confirmed and professional is assigned</p>
+          </div>
+        </div>
+        <div class="timeline-step" id="tl-onway">
+          <div class="tl-icon"><i class="fas fa-car"></i></div>
+          <div class="tl-content">
+            <h4>Professional On the Way</h4>
+            <p>Our professional is heading to your location</p>
+          </div>
+        </div>
+        <div class="timeline-step" id="tl-completed">
+          <div class="tl-icon"><i class="fas fa-flag-checkered"></i></div>
+          <div class="tl-content">
+            <h4>Service Completed</h4>
+            <p>Service has been completed successfully!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ERROR STATE -->
+  <div class="track-error" id="track-error" style="display:none">
+    <i class="fas fa-exclamation-circle"></i>
+    <h3>Booking Not Found!</h3>
+    <p>Please check your booking ID and try again</p>
+    <a href="dashboard.html" class="btn-book">View My Bookings</a>
+  </div>
+
+  <script src="js/tracking.js"></script>
+</body>
+</html>

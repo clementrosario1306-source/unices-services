@@ -13,7 +13,10 @@ const bookingSchema = new mongoose.Schema({
   notes:     { type: String },
   payment:   { type: String, default: 'upi' },
   status:    { type: String, default: 'Pending', enum: ['Pending', 'Confirmed', 'Completed', 'Cancelled'] },
-  staffName: { type: String, default: '' },
+  staffName:  { type: String, default: '' },
+  rating:     { type: Number, default: 0 },
+  review:     { type: String, default: '' },
+  reviewDate: { type: String, default: '' },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Booking', bookingSchema);

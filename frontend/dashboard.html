@@ -37,7 +37,6 @@
         <p id="user-email-display">loading@email.com</p>
         <span class="member-badge"><i class="fas fa-star"></i> Premium Member</span>
       </div>
-
       <nav class="side-nav">
         <a href="#" class="side-link active" onclick="showTab('bookings', this)">
           <i class="fas fa-calendar-check"></i> My Bookings
@@ -259,6 +258,41 @@
     </div>
   </div>
 
+  <!-- REVIEW MODAL -->
+  <div class="modal-overlay" id="review-modal">
+    <div class="modal-box" style="max-width:450px">
+      <div style="text-align:center;margin-bottom:20px">
+        <i class="fas fa-star" style="font-size:2.5rem;color:#f5a623"></i>
+        <h3 style="margin-top:10px">Rate Your Experience</h3>
+        <p id="review-service-name" style="color:#1a73e8;font-weight:600"></p>
+      </div>
+      <div style="text-align:center;margin-bottom:20px">
+        <p style="color:#777;font-size:0.9rem;margin-bottom:10px">How was the service?</p>
+        <div style="display:flex;justify-content:center;gap:10px">
+          <button class="star-btn" onclick="setRating(1)" style="font-size:2rem;background:none;border:none;cursor:pointer;color:#ddd">★</button>
+          <button class="star-btn" onclick="setRating(2)" style="font-size:2rem;background:none;border:none;cursor:pointer;color:#ddd">★</button>
+          <button class="star-btn" onclick="setRating(3)" style="font-size:2rem;background:none;border:none;cursor:pointer;color:#ddd">★</button>
+          <button class="star-btn" onclick="setRating(4)" style="font-size:2rem;background:none;border:none;cursor:pointer;color:#ddd">★</button>
+          <button class="star-btn" onclick="setRating(5)" style="font-size:2rem;background:none;border:none;cursor:pointer;color:#ddd">★</button>
+        </div>
+      </div>
+      <div style="margin-bottom:20px">
+        <textarea id="review-text" placeholder="Tell us about your experience (optional)..."
+          style="width:100%;padding:12px;border:2px solid #e0e0e0;border-radius:10px;
+          font-family:'Poppins',sans-serif;font-size:0.9rem;outline:none;resize:none"
+          rows="3"></textarea>
+      </div>
+      <div class="modal-btns">
+        <button onclick="closeReviewModal()" class="btn-no">Skip</button>
+        <button onclick="submitReview()" class="btn-yes" style="background:#f5a623">
+          <i class="fas fa-star"></i> Submit Review
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/review.js"></script>
+  <script src="js/invoice.js"></script>
   <script src="js/dashboard.js"></script>
 </body>
 </html>
